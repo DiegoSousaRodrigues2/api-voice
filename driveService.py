@@ -1,10 +1,15 @@
 from __future__ import print_function
-from google.auth.transport.requests import Request
-from google.oauth2 import service_account
 from google.oauth2.credentials import Credentials
-from google_auth_oauthlib.flow import InstalledAppFlow
-from googleapiclient.discovery import build
 import os.path
+
+import os.path
+import io
+import shutil
+
+from googleapiclient.discovery import build
+from google_auth_oauthlib.flow import InstalledAppFlow
+from google.auth.transport.requests import Request
+from googleapiclient.http import MediaIoBaseDownload, MediaFileUpload
 
 CLIENTE_SECRETE_FILE = 'token.json'
 API_NAME = 'drive'
@@ -29,14 +34,32 @@ def check_token():
 
 
 def FileDownload(cred, file_id):
+    service = build(API_NAME, API_VERSION, credentials=cred)
+    print(API_NAME, 'service created successfully')
+    request = service.files().get_media(fileId=file_id)
+    fh = io.BytesIO()
+
+    # Initialise a downloader object to download the file
+    downloader = MediaIoBaseDownload(fh, request, chunksize=204800)
+    done = False
+
     try:
-        service = build(API_NAME, API_VERSION, credentials=cred)
-        print(API_NAME, 'service created successfully')
-        return service
+        # Download the data in chunks
+        while not done:
+            status, done = downloader.next_chunk()
+
+        fh.seek(0)
+
+        # Write the received data to the file
+        with open('test.txt', 'wb') as f:
+            shutil.copyfileobj(fh, f)
+
+        print("File Downloaded")
+        # Return True if file Downloaded successfully
+        return True
     except Exception as e:
-        print('Unable to connect.')
-        print(e)
-        return None
+        print("Something went wrong.", e)
+        return False
 
 # Initialise a downloader object to download the file
 # downloader = MediaIoBaseDownload(fh, request, chunksize=204800)
@@ -85,18 +108,3 @@ def FileDownload(cred, file_id):
 #         # Raise UploadError if file is not uploaded.
 #         raise print("Can't Upload File.")
 #
-
-if __name__ == "__main__":
-    i = int(input("Enter your choice:1 - Download file, 2- Upload File, 3- Exit.\n"))
-
-    if i == 1:
-        f_id = input("Enter file id: ")
-        f_name = input("Enter file name: ")
-        FileDownload(f_id, f_name)
-
-    elif i == 2:
-        f_path = input("Enter full file path: ")
-        FileUpload(f_path)
-
-    else:
-        exit()
