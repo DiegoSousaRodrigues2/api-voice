@@ -14,13 +14,14 @@ from googleapiclient.http import MediaIoBaseDownload, MediaFileUpload
 CLIENTE_SECRETE_FILE = 'token.json'
 API_NAME = 'drive'
 API_VERSION = 'v3'
-SCOPES = ['https://www.googleapis.com/auth/drive.metadata.readonly', 'https://www.googleapis.com/auth/drive']
+SCOPES = ['https://www.googleapis.com/auth/drive']
+SCOPES_AUTENTICATION = ['https://www.googleapis.com/auth/drive.metadata.readonly']
 
 
 def check_token():
     creds = None
     if os.path.exists('token.json'):
-        creds = Credentials.from_authorized_user_file('token.json', SCOPES[0])
+        creds = Credentials.from_authorized_user_file('token.json', SCOPES_AUTENTICATION)
     if not creds or not creds.valid:
         if creds and creds.expired and creds.refresh_token:
             creds.refresh(Request())

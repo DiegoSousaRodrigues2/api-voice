@@ -8,7 +8,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def test_autorization():
-    status = driveService.check_token()
+    status, _ = driveService.check_token()
     if status == "OK":
         return jsonify({'Message': 'Api working', 'Status': http.HTTPStatus.OK})
 
