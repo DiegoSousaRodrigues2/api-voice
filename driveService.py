@@ -33,7 +33,7 @@ def check_token():
 
 
 def download_file(file_id, file_name):
-    CLIENTE_SECRET_FILE = 'client_secret_821515524601-k84jba25uosbk2187otohim5k6ime0li.apps.googleusercontent.com.json'
+    CLIENTE_SECRET_FILE = 'env/client_secret_821515524601-k84jba25uosbk2187otohim5k6ime0li.apps.googleusercontent.com.json'
     API_NAME = 'drive'
     API_VERSION = 'v3'
     SCOPE = ['https://www.googleapis.com/auth/drive']
@@ -50,6 +50,6 @@ def download_file(file_id, file_name):
         print('Donwload progress {0}'.format(status.progress() * 100))
 
     fh.seek(0)
-    with open(os.path.join('./teste', file_name), 'wb') as f:
+    with open(os.path.join('audios', file_name), 'wb') as f:
         f.write(fh.read())
         f.close()

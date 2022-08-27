@@ -32,7 +32,7 @@ def get_audio_from_google_drive():
 @app.route('/download')
 def download_audio():
     file_id = '1ite8-HbIAu8coaGqeBr2OC4MYBbOaRUu'
-    file_name = 'teste.mp3'
+    file_name = 'audios.mp3'
     driveService.download_file(file_id, file_name)
     return "OK"
 
