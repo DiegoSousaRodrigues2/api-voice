@@ -15,7 +15,7 @@ def test_autorization():
 
 @app.route('/listAudios')
 def list_audios_from_google_drive():
-    return jsonify(driveService.connect_and_get_list_of_itens())
+    return jsonify(driveService.list())
 
 
 @app.route('/getAudio')
@@ -28,11 +28,13 @@ def get_audio_from_google_drive():
     else:
         return jsonify({'Message': 'Arquivo não encontrado', 'Status': http.HTTPStatus.NOT_FOUND})
 
+
 @app.route('/download')
 def download_audio():
-    file_id = '1h1Lm6SOvwo50kWoRw9PiSzJMWjjajdMW'
-    _, creds = driveService.check_token()
-    driveService.FileDownload(creds, file_id)
+    file_id = '1ite8-HbIAu8coaGqeBr2OC4MYBbOaRUu'
+    file_name = 'teste.mp3'
+    driveService.download_file(file_id, file_name)
     return "OK"
+
 
 app.run(host='0.0.0.0')
