@@ -1,17 +1,16 @@
 import http
 from flask import Flask, jsonify, request
-
 import driveService
-
 app = Flask(__name__)
 
 
 @app.route('/')
 def test_autorization():
-    status, _ = driveService.check_token()
-    if status == "OK":
+    response = driveService.check_token()
+    if response != "OK":
         return jsonify({'Message': 'Api working', 'Status': http.HTTPStatus.OK})
-
+    else:
+        return jsonify({'Message': response, 'Status': http.HTTPStatus.BAD_REQUEST})
 
 @app.route('/listAudios')
 def list_audios_from_google_drive():
