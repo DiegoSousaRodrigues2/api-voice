@@ -1,6 +1,7 @@
 import http
 from flask import Flask, jsonify, request
 import driveService
+
 app = Flask(__name__)
 
 
@@ -12,28 +13,36 @@ def test_autorization():
     else:
         return jsonify({'Message': response, 'Status': http.HTTPStatus.BAD_REQUEST})
 
+
 @app.route('/listAudios')
 def list_audios_from_google_drive():
-    return jsonify(driveService.list())
-
-
-@app.route('/getAudio')
-def get_audio_from_google_drive():
-    args = request.args
-    id = args.get('id')
-    audio = driveService.connect_and_get_list_of_itens()
-    if audio.get(id):
-        return jsonify({'id': audio.get(id)})
-    else:
-        return jsonify({'Message': 'Arquivo não encontrado', 'Status': http.HTTPStatus.NOT_FOUND})
+    return driveService.list_file()
 
 
 @app.route('/download')
-def download_audio():
-    file_id = '1ite8-HbIAu8coaGqeBr2OC4MYBbOaRUu'
-    file_name = 'audios.mp3'
-    driveService.download_file(file_id, file_name)
-    return "OK"
+def download_audio_and_change_to_text():
+    args = request.args
+    file_id = args.get('id')
+    file_name = args.get('name')
+    if file_id is None or file_name is None:
+        return jsonify({'Message': 'Inconsistencia no parametro', 'Status': http.HTTPStatus.BAD_REQUEST})
+    status = driveService.download_file(file_id, file_name)
+    if(status == "Error"):
+        return jsonify({'Message': 'Error', 'Status': http.HTTPStatus.BAD_REQUEST})
+    return jsonify({'Message': 'Download realizado', 'Status': http.HTTPStatus.OK})
+
+
+@app.route('/getAudioById')
+def get_audio_by_id():
+    args = request.args
+    file_id = args.get('id')
+    if file_id is None:
+        return jsonify({'Message': 'Inconsistencia no parametro', 'Status': http.HTTPStatus.BAD_REQUEST})
+    audio = driveService.get_file(file_id)
+    if audio is not None:
+        return jsonify(audio)
+    else:
+        return jsonify({'Message': 'Arquivo não encontrado', 'Status': http.HTTPStatus.NOT_FOUND})
 
 
 app.run(host='0.0.0.0')
