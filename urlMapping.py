@@ -30,8 +30,8 @@ def download_audio_and_change_to_text():
     status = driveService.download_file(file_id, file_name)
     if status == "Error":
         return jsonify({'Message': 'Error', 'Status': http.HTTPStatus.BAD_REQUEST})
-    message = voiceService.speeach_to_texto("audios/" + file_name)
-    return jsonify({'Message': message, 'Status': http.HTTPStatus.OK})
+    star, message = voiceService.speeach_to_texto("audios/" + file_name)
+    return jsonify({'Message': message, 'Star': star, 'Status': http.HTTPStatus.OK})
 
 
 @app.route('/getAudioById')
