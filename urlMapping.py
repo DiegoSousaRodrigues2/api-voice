@@ -1,6 +1,7 @@
 import http
 from flask import Flask, jsonify, request
 import driveService
+import voiceService
 
 app = Flask(__name__)
 
@@ -27,9 +28,10 @@ def download_audio_and_change_to_text():
     if file_id is None or file_name is None:
         return jsonify({'Message': 'Inconsistencia no parametro', 'Status': http.HTTPStatus.BAD_REQUEST})
     status = driveService.download_file(file_id, file_name)
-    if(status == "Error"):
+    if status == "Error":
         return jsonify({'Message': 'Error', 'Status': http.HTTPStatus.BAD_REQUEST})
-    return jsonify({'Message': 'Download realizado', 'Status': http.HTTPStatus.OK})
+    message = voiceService.speeach_to_texto("audios/" + file_name)
+    return jsonify({'Message': message, 'Status': http.HTTPStatus.OK})
 
 
 @app.route('/getAudioById')
