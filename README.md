@@ -84,7 +84,8 @@ Inicie o servidor
 | `name`    | `string` | O nome do video |
 
 
-```http
+```http![image](https://user-images.githubusercontent.com/80047822/189547513-bfa67dc9-7348-4e29-a25d-58be87294c77.png)
+
   GET /getAudioById?id=file_id
 ```
 ### Retorna apenas o id e name de um video
@@ -101,3 +102,18 @@ Inicie o servidor
 | `Message` | `string`  | Speach-to-text do audio  |
 | `Star`    | `Integer` | Quantidade de estrela |
 | `Status`  | `HTTPS`   | Status da requisição |
+
+## Fluxograma e Proposta de Solução
+
+ - [Miro](https://miro.com/app/board/uXjVPbhgzVs=/)
+
+
+
+## Fluxograma
+
+<a href="https://ibb.co/kG8GLp0"><img src="https://i.ibb.co/Cw7wjqv/Whats-App-Image-2022-09-11-at-16-37-00.jpg" alt="Whats-App-Image-2022-09-11-at-16-37-00" border="0"/></a>
+
+## Proposta de Solução
+
+<a href="https://ibb.co/wwpVtCM"><img src="https://i.ibb.co/qWmK69k/Whats-App-Image-2022-09-11-at-16-36-41.jpg" alt="Whats-App-Image-2022-09-11-at-16-36-41" border="0"/>
+</a>
