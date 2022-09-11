@@ -6,7 +6,7 @@ import voiceService
 app = Flask(__name__)
 
 
-@app.route('/')
+@app.route('/health')
 def test_autorization():
     response = driveService.check_token()
     if response != "OK":
