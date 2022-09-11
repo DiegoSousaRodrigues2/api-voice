@@ -38,11 +38,11 @@ Inicie o servidor
 #### Integrantes
 
 - [@Diego Sousa Rodrigues - RM87910](https://www.github.com/DiegoSousaRodrigues2)
-- [@Emily Keyt Manfrin - RM87198](https://www.github.com/octokatherine)
+- [@Emily Keyt Manfrin - RM87198](https://www.github.com/404)
 - [@Gabriel Rodrigues Cordeiro - RM87265](https://github.com/GabrielCordeiro2412)
-- [@Giovana Nelo Furlan - RM88936](https://www.github.com/octokatherine)
+- [@Giovana Nelo Furlan - RM88936](https://www.github.com/giovanafurlan)
 - [@Heloisa Beatriz de Oliveira Costa - RM85589](https://www.github.com/Helloisa22)
-- [@Glória Maria Ribeiro Souza - RM 88613](https://www.github.com/octokatherine)
+- [@Glória Maria Ribeiro Souza - RM 88613](https://www.github.com/404)
 
 
 ## Documentação da API
