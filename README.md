@@ -37,7 +37,7 @@ Inicie o servidor
 # Nome do grupo: RateIt
 #### Integrantes
 
-- [@Diego Sousa Rodrigues - RM87910](https://www.github.com/octokatherine)
+- [@Diego Sousa Rodrigues - RM87910](https://www.github.com/DiegoSousaRodrigues2)
 - [@Emily Keyt Manfrin - RM87198](https://www.github.com/octokatherine)
 - [@Gabriel Rodrigues Cordeiro - RM87265](https://github.com/GabrielCordeiro2412)
 - [@Giovana Nelo Furlan - RM88936](https://www.github.com/octokatherine)
@@ -101,11 +101,3 @@ Inicie o servidor
 | `Message` | `string`  | Speach-to-text do audio  |
 | `Star`    | `Integer` | Quantidade de estrela |
 | `Status`  | `HTTPS`   | Status da requisição |
-
-## Funcionalidades
-
-- Temas dark e light
-- Preview em tempo real
-- Modo tela cheia
-- Multiplataforma
-
