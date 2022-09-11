@@ -84,8 +84,7 @@ Inicie o servidor
 | `name`    | `string` | O nome do video |
 
 
-```http![image](https://user-images.githubusercontent.com/80047822/189547513-bfa67dc9-7348-4e29-a25d-58be87294c77.png)
-
+```http
   GET /getAudioById?id=file_id
 ```
 ### Retorna apenas o id e name de um video
