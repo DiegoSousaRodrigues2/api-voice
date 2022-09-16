@@ -25,7 +25,7 @@ Instale as dependências
   pip install google-auth-oauthlib
   pip install --upgrade google-api-python-client
   pip install SpeechRecognition
-  pip install unicode
+  pip install unidecode
 ```
 
 Inicie o servidor
