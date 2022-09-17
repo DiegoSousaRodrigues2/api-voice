@@ -114,14 +114,14 @@ Inicie o servidor
 
 ## Fluxograma
 
-<a href="https://ibb.co/kG8GLp0"><img src="https://i.ibb.co/Cw7wjqv/Whats-App-Image-2022-09-11-at-16-37-00.jpg" alt="Whats-App-Image-2022-09-11-at-16-37-00" border="0"/></a>
+<a href="https://ibb.co/kG8GLp0"><img src="https://i.ibb.co/Cw7wjqv/Whats-App-Image-2022-09-11-at-16-37-00.jpg" alt="Fluxograma" border="0"/></a>
 
 ## Proposta de Solução
 
-<a href="https://ibb.co/wwpVtCM"><img src="https://i.ibb.co/qWmK69k/Whats-App-Image-2022-09-11-at-16-36-41.jpg" alt="Whats-App-Image-2022-09-11-at-16-36-41" border="0"/>
+<a href="https://ibb.co/wwpVtCM"><img src="https://i.ibb.co/qWmK69k/Whats-App-Image-2022-09-11-at-16-36-41.jpg" alt="Proposta de Solução" border="0"/>
 </a>
 
-## fluxo Conversacional
+## Fluxo Conversacional
 
-<a href="https://ibb.co/JsmR0RT"><img src="https://i.ibb.co/0Gmj8jL/imagem-2022-09-17-190634223.png" alt="imagem-2022-09-17-190634223" border="0">
+<a href="https://ibb.co/JsmR0RT"><img src="https://i.ibb.co/0Gmj8jL/imagem-2022-09-17-190634223.png" alt="Fluxo Conversacional" border="0">
 </a>
