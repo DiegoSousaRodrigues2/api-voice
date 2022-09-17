@@ -34,6 +34,9 @@ Inicie o servidor
   python urlMapping.py
 ```
 
+## Video Youtube
+
+ - [Video](https://youtu.be/k_HH1trfG6Y)
 
 # Nome do grupo: RateIt
 #### Integrantes
