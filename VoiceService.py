@@ -1,5 +1,7 @@
+import os.path
 import speech_recognition as sr
 from unidecode import unidecode
+from ZamzarService import route
 
 r = sr.Recognizer()
 
@@ -15,6 +17,9 @@ stars = (one, two, three, four, five)
 
 
 def speeach_to_texto(path):
+    if not os.path.basename(path).endswith('.wav'):
+        path = route(path)
+
     with sr.AudioFile(path) as source:
         audio = r.record(source)
         stt = r.recognize_google(audio, language="pt-BR")
@@ -31,3 +36,8 @@ def rating(stt):
             if value in unidecode(stt):
                 return stars.index(key) + 1
     return "error"
+
+# download()
+# verify_id()
+# _, stt = speeach_to_texto('./audios/a3.wav')
+# print(stt)

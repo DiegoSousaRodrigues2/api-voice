@@ -1,23 +1,34 @@
 import http
 from flask import Flask, jsonify, request
-import driveService
-import voiceService
+import DriveService
+import VoiceService
+import requests
+from requests.auth import HTTPBasicAuth
+
+import a
 
 app = Flask(__name__)
 
 
 @app.route('/health')
-def test_autorization():
-    response = driveService.check_token()
+def test_autorization_google_drive_api():
+    response = DriveService.check_token()
     if response != "OK":
         return jsonify({'Message': 'Api working', 'Status': http.HTTPStatus.OK})
     else:
         return jsonify({'Message': response, 'Status': http.HTTPStatus.BAD_REQUEST})
 
 
+def teste_autorization_zamzar_api():
+    api_key = '8f6ea174098cb43316cd3c7779067747519f58b9'
+    endpoint = "https://sandbox.zamzar.com/v1/formats/gif"
+    requests.get(endpoint, auth=HTTPBasicAuth(api_key, ''))
+    return jsonify({'Message': 'Api working', 'Status': http.HTTPStatus.OK})
+
+
 @app.route('/listAudios')
 def list_audios_from_google_drive():
-    return driveService.list_file()
+    return DriveService.list_file()
 
 
 @app.route('/download')
@@ -27,10 +38,10 @@ def download_audio_and_change_to_text():
     file_name = args.get('name')
     if file_id is None or file_name is None:
         return jsonify({'Message': 'Inconsistencia no parametro', 'Status': http.HTTPStatus.BAD_REQUEST})
-    status = driveService.download_file(file_id, file_name)
+    status = DriveService.download_file(file_id, file_name)
     if status == "Error":
         return jsonify({'Message': 'Error', 'Status': http.HTTPStatus.BAD_REQUEST})
-    star, message = voiceService.speeach_to_texto("audios/" + file_name)
+    star, message = VoiceService.speeach_to_texto("audios/" + file_name)
     return jsonify({'Message': message, 'Star': star, 'Status': http.HTTPStatus.OK})
 
 
@@ -40,7 +51,7 @@ def get_audio_by_id():
     file_id = args.get('id')
     if file_id is None:
         return jsonify({'Message': 'Inconsistencia no parametro', 'Status': http.HTTPStatus.BAD_REQUEST})
-    audio = driveService.get_file(file_id)
+    audio = DriveService.get_file(file_id)
     if audio is not None:
         return jsonify(audio)
     else:
