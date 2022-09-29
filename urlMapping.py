@@ -1,16 +1,15 @@
 import http
 from flask import Flask, jsonify, request
 import DriveService
+import VoiceController
 import VoiceService
 import requests
 from requests.auth import HTTPBasicAuth
 
-import a
-
 app = Flask(__name__)
 
 
-@app.route('/health')
+@app.route('/health/drive')
 def test_autorization_google_drive_api():
     response = DriveService.check_token()
     if response != "OK":
@@ -19,6 +18,7 @@ def test_autorization_google_drive_api():
         return jsonify({'Message': response, 'Status': http.HTTPStatus.BAD_REQUEST})
 
 
+@app.route('/health/zamzar')
 def teste_autorization_zamzar_api():
     api_key = '8f6ea174098cb43316cd3c7779067747519f58b9'
     endpoint = "https://sandbox.zamzar.com/v1/formats/gif"
@@ -41,7 +41,7 @@ def download_audio_and_change_to_text():
     status = DriveService.download_file(file_id, file_name)
     if status == "Error":
         return jsonify({'Message': 'Error', 'Status': http.HTTPStatus.BAD_REQUEST})
-    star, message = VoiceService.speeach_to_texto("audios/" + file_name)
+    star, message = VoiceController.route(file_name)
     return jsonify({'Message': message, 'Star': star, 'Status': http.HTTPStatus.OK})
 
 
